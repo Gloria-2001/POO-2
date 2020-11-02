@@ -1,7 +1,10 @@
+import java.util.Scanner;
+
 public class Racional{
     //campos
     private int num;
     private int den;
+    public int opc;
     //constructores
     public Racional(){
         num=1;
@@ -25,10 +28,23 @@ public class Racional{
     public void imprimir(){
         System.out.println("["+ num +","+ den +"]");
     }
-    public Racional mult(Racional X){
-        num=num*X.num;
-        den=den*X.den;
-        return new Racional(num,den);
+
+    public int menu(){
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Por favor elija la operacion del siguiente menu:");
+        System.out.println("1. Suma \n 2. Resta \n 3. Multiplicacion \n 4. Division");
+        int opc=sc.nextInt();
+        return opc;
+    }
+
+    public void sum(Racional X, Racional Y){
+        num=((X.num*Y.den)+(X.den*Y.num));
+        den=(X.den*Y.den);
+    }
+
+    public void rest(Racional X, Racional Y){
+        num=((X.num*Y.den)-(X.den*Y.num));
+        den=(X.den*Y.den);
     }
 
     public void mult(Racional X, Racional Y){
@@ -36,24 +52,8 @@ public class Racional{
         den=X.den*Y.den;
     }
 
-    public void mult(int a,int b){
-        num=num*a;
-        den=den*b;
-    }
-
-    public Racional div(Racional X){
-        num=num*X.den;
-        den=den*X.num;
-        return this;
-    }
-
     public void div(Racional X,Racional Y){
         num=X.num*Y.den;
         den=X.den*Y.num;
-    }
-
-    public void div(int a,int b){
-        num=num*b;
-        den=den*a;
     }
 }

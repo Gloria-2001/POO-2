@@ -1,46 +1,44 @@
 public class UserRacional{
     public static void main(String [] args){
         Racional A,B; //declarar variables de referencia
-        //crear objeto con operador new. Asignamos respectivas referencias (A,B,C)
-        A=new Racional(1,2);
-        B=new Racional(3,4);
-        Racional C=new Racional(2,3);
+        Racional suma,resta;
+        int valorEntero = (int)(Math.random()*(99-10+1)+10); 
+        int valorEntero1 = (int)(Math.random()*(99-10+1)+10);
+        int valorEntero2 = (int)(Math.random()*(99-10+1)+10);
+        int valorEntero3 = (int)(Math.random()*(99-10+1)+10);
+        //crear objeto con operador new. Asignamos respectivas referencias (A,B)
+        A=new Racional(valorEntero,valorEntero1);
+        B=new Racional(valorEntero2,valorEntero3);
 
+        System.out.println("Las fracciones son: "); 
         A.imprimir();
         B.imprimir();
-        C.imprimir();
-        
-        A.mult(B);
-        System.out.print("Multiplicacion:");
-        A.imprimir();
 
-        B.mult(A,C);
+        switch(A.menu()){
+            case 1:
+                A.sum(A,B);
+                A.imprimir(); 
+                System.out.println("¡Ahora hágalo usted mismo!");
+            break;
+            case 2:
+                A.rest(A,B);
+                A.imprimir();
+                System.out.println("¡Ahora hágalo usted mismo!");
+            break;
+        }
+    }
+}
+               
+      /*  B.mult(A,C);
         System.out.print("Multiplicacion sobrecarga de metodos:");
         B.imprimir();
 
-        A.mult(1,2);
-        System.out.print("Multiplicacion entero:");
-        A.imprimir();
-
-        A.mult(B.mult(C));
-        System.out.println("multiplicacion metodos:");
-        A.imprimir();
-
-        A.div(B);
-        System.out.print("Division:");
-        A.imprimir();
-
         B.div(A,C);
         System.out.print("Division sobrecarga");
-        B.imprimir();
+        B.imprimir();  */
 
-        C.div(3,4);
-        System.out.print("Division entero");
-
-        A.div(B.div(C));
-        System.out.print("Division metodos");
-        A.imprimir();
-
+        
+/*
         System.out.println("++++++++++++++++++");
 
         System.out.println("Arreglos racionales");
@@ -72,5 +70,4 @@ public class UserRacional{
         R1=R2;
         r=R1.equals(R2);
         System.out.println("Segunda prueba, el valor de r es: " + r);
-    }
-}
+    }*/
