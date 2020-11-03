@@ -38,13 +38,23 @@ public class Racional{
     }
 
     public void sum(Racional X, Racional Y){
-        num=((X.num*Y.den)+(X.den*Y.num));
-        den=(X.den*Y.den);
+        if(X.den==Y.den){
+            num=X.num+Y.num;
+            den=X.den;
+        }else{
+            num=((X.num*Y.den)+(X.den*Y.num));
+            den=(X.den*Y.den);
+        }
     }
 
     public void rest(Racional X, Racional Y){
-        num=((X.num*Y.den)-(X.den*Y.num));
-        den=(X.den*Y.den);
+        if(X.den==Y.den){
+            num=X.num-Y.num;
+            den=X.den;
+        }else{
+            num=((X.num*Y.den)-(X.den*Y.num));
+            den=(X.den*Y.den);
+        }
     }
 
     public void mult(Racional X, Racional Y){

@@ -18,12 +18,12 @@ public class UserRacional{
             case 1:
                 A.sum(A,B);
                 A.imprimir(); 
-                System.out.println("¡Ahora hágalo usted mismo!");
+                System.out.println("Ahora hagalo usted mismo!");
             break;
             case 2:
                 A.rest(A,B);
                 A.imprimir();
-                System.out.println("¡Ahora hágalo usted mismo!");
+                System.out.println("Ahora hagalo usted mismo!");
             break;
         }
     }
