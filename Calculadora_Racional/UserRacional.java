@@ -1,12 +1,15 @@
+//Ayala Martinez Juan Luis
+//Olivares Ménez Gloria Oliva 
+
 import java.util.*;
 import java.util.Scanner;
 public class UserRacional{
     public static void main(String [] args){
         Racional A,B,RESP; //declarar variables de referencia
-        int valorEntero = (int)(Math.random()*(99-10+1)+10); 
-        int valorEntero1 = (int)(Math.random()*(99-10+1)+10);
-        int valorEntero2 = (int)(Math.random()*(99-10+1)+10);
-        int valorEntero3 = (int)(Math.random()*(99-10+1)+10);
+        int valorEntero = (int)(Math.random()*(9-1+1)+1); 
+        int valorEntero1 = (int)(Math.random()*(9-1+1)+1);
+        int valorEntero2 = (int)(Math.random()*(9-1+1)+1);
+        int valorEntero3 = (int)(Math.random()*(9-1+1)+1);
         int den;
         int num;        
 //crear objeto con operador new. Asignamos respectivas referencias (A,B)

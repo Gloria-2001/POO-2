@@ -1,3 +1,6 @@
+//Ayala Martinez Juan Luis
+//Olivares Ménez Gloria Oliva 
+
 import java.util.Scanner;
 
 public class Racional {
