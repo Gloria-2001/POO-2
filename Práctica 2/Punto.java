@@ -20,6 +20,11 @@ public class Punto{
         this.y=y;
     }
 
+    public Punto(int x,int y){
+        this.x=x;
+        this.y=y;
+    }
+
     //Getters
     public String getName(){
         return nombrePunto;
