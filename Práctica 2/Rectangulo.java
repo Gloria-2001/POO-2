@@ -1,92 +1,274 @@
-import java.util.*;
+/*
+    Instituto Politécnico Nacional 
+    Escuela Superior de Cómputo 
 
-public class Rectangulo{
-    private Punto a; //esquina inf izq
-    private Punto b; //esquina sup der 
-    private String nombreRect; //nombre que se le dara al rectangulo
+    Autores: 
+    Ayala Martínez Juan Luis 
+    Olivares Ménez Gloria Oliva 
 
-    //Constructores 
-    public Rectangulo(){
-        nombreRect="";
-        a=new Punto();
-        b=new Punto();
+    Programación Orientada a Objetos
+
+    Grupo: 2CM4
+*/
+
+public class Rectangulo {
+    private String nombre;
+    private Punto a;
+    private Punto b;
+
+    /***********************Constructores*******************/
+    public Rectangulo() {
+        this.nombre = "Incognito";
+        this.a = new Punto(1,1);
+        this.b = new Punto(2,2);
     }
 
-    public Rectangulo(String nR){
-        nombreRect=nR;
-        a=new Punto();
-        b=new Punto();
+    public Rectangulo(Punto a, Punto b) {
+        this.nombre = "Rn";
+        this.a = a;
+        this.b = b;
     }
 
-    public Rectangulo(String nR,Punto a,Punto b){
-        nombreRect=nR;
-        this.a=a;
-        this.b=b;
+    public Rectangulo(String nombre, Punto a, Punto b) {
+        this.nombre = nombre;
+        this.a = a;
+        this.b = b;
+    }
+    
+    public Rectangulo(Rectangulo r) {
+        this.nombre = r.getNombre();
+        this.a = r.getA();
+        this.b = r.getB();
     }
 
-    public Rectangulo(String nR,int x1,int y1,int x2,int y2){
-        nombreRect=nR;
-        a=new Punto(x1,y1);
-        b=new Punto(x2,y2);
+    public Rectangulo(String nombre) {
+        this.nombre = nombre;
+        this.a = new Punto(1,1);
+        this.b = new Punto(2,2);
+    }
+    
+     /***********************************Metodos*****************/
+    
+    public Rectangulo union(Rectangulo r){
+        int x = this.getA().getX();
+        int y = this.getA().getY();
+        if(x<this.getB().getX()){
+            if(x<r.getA().getX()){
+                if(x>r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+            else{
+                x=r.getA().getX();
+                if(x>r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+        }
+        else{
+            x=this.getB().getX();
+            if(x<r.getA().getX()){
+                if(x>r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+            else{
+                x=r.getA().getX();
+                if(x>r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+        }
+        if(y<this.getB().getY()){
+            if(y<r.getA().getY()){
+                if(y>r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+            else{
+                y=r.getA().getY();
+                if(y>r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+        }
+        else{
+            y=this.getB().getY();
+            if(y<r.getA().getY()){
+                if(y>r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+            else{
+                y=r.getA().getY();
+                if(y>r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+        }
+        
+        Punto p1 = new Punto("A",x,y);
+        
+        x = this.getA().getX();
+        y = this.getA().getY();
+        if(x>this.getB().getX()){
+            if(x>r.getA().getX()){
+                if(x<r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+            else{
+                x=r.getA().getX();
+                if(x<r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+        }
+        else{
+            x=this.getB().getX();
+            if(x>r.getA().getX()){
+                if(x<r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+            else{
+                x=r.getA().getX();
+                if(x<r.getB().getX()){
+                    x=r.getB().getX();
+                }
+            }
+        }
+        if(y>this.getB().getY()){
+            if(y>r.getA().getY()){
+                if(y<r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+            else{
+                y=r.getA().getY();
+                if(y<r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+        }
+        else{
+            y=this.getB().getY();
+            if(y>r.getA().getY()){
+                if(y<r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+            else{
+                y=r.getA().getY();
+                if(y<r.getB().getY()){
+                    y=r.getB().getY();
+                }
+            }
+        }
+        Punto p2 = new Punto("B",x,y);
+        Rectangulo rUnion = new Rectangulo("Union",p1,p2);
+        return rUnion;
+    }
+    
+    public String toString(){
+        return this.getNombre() + ":[" + this.getA() + "," + this.getB() + "]";
+        
+    }
+    
+    public boolean estaAdentro(Punto p){
+        if(p.getX()>=this.getA().getX() && p.getX()<=this.getB().getX() ){
+            if(p.getY()>=this.getA().getY() && p.getY()<=this.getB().getY()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public double calcularArea(){
+        //Area calculada por Determinantes
+        return Math.abs(((this.getA().getX()*this.getA().getY()+this.getB().getX()*this.getB().getY())-(this.getA().getX()*this.getB().getY()+this.getB().getX()*this.getA().getY())));
     }
 
-    public Rectangulo(Rectangulo R){
-        a=R.getPoint1();
-        b=R.getPoint2();
-        nombreRect=R.getName();
+    public int comparar(Rectangulo r){
+        if(r.calcularArea() == this.calcularArea()){
+            return 0;
+        }
+        else if (r.calcularArea() >= this.calcularArea()){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+    
+    public int comparar(Triangulo t){
+        if(t.calcularArea() == this.calcularArea()){
+            return 0;
+        }
+        else if (t.calcularArea() >= this.calcularArea()){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+    
+    public void moverRect(Punto a,Punto b){
+        this.setA(a);
+        this.setB(b);
     }
 
-    //Getters
-    public String getName(){
-        return nombreRect;
+    public int cuadRect(){
+        Punto supIzquierdo = new Punto(this.getA().getX(),this.getB().getY());
+        return supIzquierdo.cuadrante();
+    }
+    
+    public Rectangulo interseccion(Rectangulo r){
+       Punto C = new Punto(r.getB().getX(),r.getA().getY());
+       Punto D = new Punto(r.getA().getX(),r.getB().getY());
+       if(this.estaAdentro(r.getA())){
+           return new Rectangulo(r.getA(),this.getB());
+       }
+       else if(this.estaAdentro(r.getB())){
+            return new Rectangulo(this.getA(),r.getB());
+       }
+       else if(this.estaAdentro(C)){
+           Punto aux1= new Punto(this.getA().getX(),r.getA().getY());
+           Punto aux2= new Punto(r.getA().getX(),this.getA().getY());
+           return new Rectangulo(aux1,aux2);
+       }
+       else if(this.estaAdentro(D)){
+           Punto aux1= new Punto(r.getA().getX(),this.getA().getY());
+           Punto aux2= new Punto(this.getA().getX(),r.getA().getY());
+           return new Rectangulo(aux1,aux2);
+       }
+       
+       return null;
+    }
+    /**********************Setters y Getterrs***************/
+
+    public String getNombre() {
+        return nombre;
     }
 
-    public Punto getPoint1(){
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Punto getA() {
         return a;
     }
 
-    public Punto getPoint2(){
+    public void setA(Punto a) {
+        this.a = a;
+    }
+
+    public Punto getB() {
         return b;
     }
 
-    //Devuelve un objeto Rectangulo que representa la intersección entre 2 rectangulos.
-    public Rectangulo interseccion(Rectangulo R){
-         List<Integer> x = new ArrayList<Integer>(
-            Arrays.asList(a.getX(), b.getX(), R.getPoint1().getX(), R.getPoint2().getX())
-        );
-        List<Integer> y = new ArrayList<Integer>(
-            Arrays.asList(a.getY(), b.getY(), R.getPoint1().getY(), R.getPoint2().getY())
-        );
-        Collections.sort(x);
-        Collections.sort(y);
-        return new Rectangulo("N",x.get(1),y.get(1),x.get(2),y.get(2));
+    public void setB(Punto b) {
+        this.b = b;
     }
-
-    //Devuelve una impresion del nombre del rectangulo junto con sus ptos
-    public String toString(){
-        return nombreRect+": ["+a.toString()+","+b.toString()+"]";
-    }
-
-    //Calcula area de rectangulo
-    public int area(){
-        int b0=b.getX();int b1=a.getX();
-        int h0=b.getY();int h1=a.getY();
-        int b=b0-b1;
-        int h=h0-h1;
-        return b*h; 
-    }
-
-    //Compara areas de rectangulos
-    public void comparar(Rectangulo r){
-        double aR=r.area();
-        Rectangulo r1 = new Rectangulo();
-        double aR1=r1.area();
-        if(aR1==aR){
-            System.out.println("0");
-        }else if(aR1<aR){
-            System.out.println("-1");
-        }else if(aR1>aR){
-            System.out.println("1");
-        }
-    }
+    
 }

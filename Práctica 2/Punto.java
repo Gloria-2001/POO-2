@@ -1,72 +1,96 @@
-public class Punto{
-    private int x; //coordenada x
-    private int y; //coordenada y
-    private String nombrePunto; //nombre que se le dara al punto
+    /*
+    Instituto Politécnico Nacional 
+    Escuela Superior de Cómputo 
 
-    //Constructores 
-    public Punto(){
-        nombrePunto="";
-        x=y=0;
+    Autores: 
+    Ayala Martínez Juan Luis 
+    Olivares Ménez Gloria Oliva 
+
+    Programación Orientada a Objetos
+
+    Grupo: 2CM4
+*/
+
+    public class Punto {
+    
+    private String nombre;
+    private int x;
+    private int y;
+/********************************Constructores********************/
+    public Punto() {
+        this.x = 0;
+        this.y = 0;
     }
 
-    public Punto(String np,int x){
-        nombrePunto=np;
-        this.x=x;
+    public Punto(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    public Punto(Punto p){
+        this.nombre = p.nombre;
+        this.x = p.x;
+        this.y = p.y;
+    }
+    public Punto(String nombre, int x, int y) {
+        this.nombre = nombre;
+        this.x = x;
+        this.y = y;
+    }
+   /***********************************Metodos*****************/
+    public String toString(){
+        return this.nombre + "(" + this.getX() + "," + this.getY() + ")";
+    }
+    
+    public double  distancia(Punto p){
+        return Math.sqrt(Math.pow(p.getX()-this.getX(), 2.0)+Math.pow(p.getY()-this.y, 2.0));
+    }
+    
+    public double distancia(){
+        return Math.sqrt(Math.pow(this.getX(),2.0)+Math.pow(this.getY(), 2.0));
+    }
+    
+    public int cuadrante(){
+        if(this.getX()>0 && this.getY()>0){
+            return 1;
+        }
+        else if(this.getX()>0 && this.getY()<0){
+            return 4;
+        }
+        else if(this.getX()<0 && this.getY()>0){
+            return 2;
+        }
+        else if(this.getX()<0 && this.getY()<0){
+            return 3;
+        }
+        return 0;
+        
+    }
+    
+/*************************Getters y Setters*****************************************/
+    public String getNombre() {
+        return nombre;
     }
 
-    public Punto(String np,int x,int y){
-        nombrePunto=np;
-        this.x=x;
-        this.y=y;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Punto(int x,int y){
-        this.x=x;
-        this.y=y;
-    }
-
-    //Getters
-    public String getName(){
-        return nombrePunto;
-    }
-
-    public int getX(){
+    public int getX() {
         return x;
     }
 
-    public int getY(){
-        return y; 
+    public void setX(int x) {
+        this.x = x;
     }
 
-    //Devuelve una impresion del nombre del pto junto con las coordenadas
-    public String toString(){
-        return nombrePunto+"("+x+","+y+")";
+    public int getY() {
+        return y;
     }
 
-    //Distancia de un pto al origen
-    public double distancia(){
-        double dis=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-        return dis; 
-    }
-
-    //Distancia entre 2 ptos
-    public double distancia(Punto P){
-        int xP=P.getX();
-        int yP=P.getY();
-        double dis=Math.sqrt(Math.pow(xP-x,2)+Math.pow(yP-y,2));
-        return dis;
-    }
-
-    //Indica el No. de cuadrante
-    public void cuadrante(){
-        if(x>0 && y>0){
-            System.out.println("El punto está en el primer cuadrante");
-        }else if(x<0 && y>0){
-            System.out.println("El punto está en el segundo cuadrante");
-        }else if(x<0 && y<0){
-            System.out.println("El punto está en el tercer cuadrante");
-        }else if(x>0 && y<0){
-            System.out.println("El punto está en el cuarto cuadrante");
-        }
+    public void setY(int y) {
+        this.y = y;
     }
 }
+
+
